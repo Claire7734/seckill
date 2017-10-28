@@ -83,22 +83,23 @@ public class SeckillController {
             SeckillExecution execution = seckillService.executeSeckill(seckillId, phone, md5);
             result = new SeckillResult<SeckillExecution>(true, execution);
         } catch (SeckillClosedException e1) {
-            SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
-            result = new SeckillResult<SeckillExecution>(false, execution);
-        } catch (RepeatKillException e2) {
             SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.END);
-            result = new SeckillResult<SeckillExecution>(false, execution);
+            result = new SeckillResult<SeckillExecution>(true, execution);
+        } catch (RepeatKillException e2) {
+            SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
+            result = new SeckillResult<SeckillExecution>(true, execution);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);
-            result = new SeckillResult<SeckillExecution>(false, execution);
+            result = new SeckillResult<SeckillExecution>(true, execution);
         }
         return result;
     }
 
     @GetMapping("/time/now")
+    @ResponseBody
     public SeckillResult<Long> time() {
         Date now = new Date();
-        return new SeckillResult(true, now.getTime());
+        return new SeckillResult<Long>(true, now.getTime());
     }
 }
