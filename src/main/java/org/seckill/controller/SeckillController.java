@@ -46,6 +46,7 @@ public class SeckillController {
         Seckill seckill = seckillService.getById(seckillId);
         if (seckill == null)
             return "forward:/seckill/list";
+        model.addAttribute("seckill",seckill);
         return "detail";
     }
 
