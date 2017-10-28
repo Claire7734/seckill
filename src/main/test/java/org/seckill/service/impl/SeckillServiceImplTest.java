@@ -59,10 +59,10 @@ public class SeckillServiceImplTest {
             try {
                 SeckillExecution execution = seckillService.executeSeckill(seckillId, phone, md5);
                 logger.info("result={}",execution);
-            } catch (SeckillClosedException e) {
-                e.printStackTrace();
-            } catch (RepeatKillException e) {
-                e.printStackTrace();
+            } catch (SeckillClosedException e1) {
+                e1.printStackTrace();
+            } catch (RepeatKillException e2) {
+                e2.printStackTrace();
             }
         }else {
             //秒杀未开启
