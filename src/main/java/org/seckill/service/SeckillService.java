@@ -36,7 +36,7 @@ public interface SeckillService {
     Exposer exportSeckillUrl(long seckillId);
 
     /**
-     * 执行秒杀操作，有可能失败，有可能成功，所以要抛出我们允许的异常
+     * 执行秒杀操作by存储过程
      *
      * @param seckillId 秒杀的商品ID
      * @param userPhone 手机号码
@@ -45,4 +45,7 @@ public interface SeckillService {
      */
     SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
         throws SecurityException,SeckillClosedException,RepeatKillException;
+
+    SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5)
+            throws SecurityException,SeckillClosedException,RepeatKillException;
 }
