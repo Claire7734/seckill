@@ -60,7 +60,7 @@ public class SeckillController {
         try {
             Exposer exposer = seckillService.exportSeckillUrl(seckillId);
             result = new SeckillResult<Exposer>(true, exposer);
-        } catch (Exception e) {
+        } catch (Exception e) {//暂时不明白要catch什么异常？？？？
             logger.error(e.getMessage(), e);
             result = new SeckillResult<Exposer>(false, e.getMessage());
         }

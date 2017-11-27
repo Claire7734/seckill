@@ -11,7 +11,7 @@ public class SeckillResult<T> {
 
     private T data;
 
-    private String error;
+    private String error;//对失败情况的解释 e.getMessage()
 
     public SeckillResult(boolean success, T data) {
         this.success = success;

@@ -39,6 +39,7 @@ public class SeckillServiceImpl implements SeckillService {
     // 加入一个混淆字符串(秒杀接口)的salt，为了避免用户猜出我们的md5值，值任意给，越复杂越好
     private final String salt = "sadfUIsdv23rwkUVdafe";
 
+    //TODO 分页
     public List<Seckill> getSeckillList() {
         return seckillDao.queryAll(0, 4);
     }
