@@ -1,4 +1,4 @@
-package org.seckill.cache;
+package org.seckill.dao.cache;
 
 import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtobufIOUtil;
