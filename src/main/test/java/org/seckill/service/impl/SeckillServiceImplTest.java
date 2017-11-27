@@ -49,24 +49,24 @@ public class SeckillServiceImplTest {
     //继承测试代码完整逻辑，注意可重复执行
     @Test
     public void testSeckillLogic() throws Exception {
-        long seckillId = 1000;
+        long seckillId = 1001;
         Exposer exposer = seckillService.exportSeckillUrl(seckillId);
-        if(exposer.isExposed()){
+        if (exposer.isExposed()) {
             logger.info("exposer={}", exposer);
             long phone = 1235674334L;
             String md5 = exposer.getMd5();
 
             try {
                 SeckillExecution execution = seckillService.executeSeckill(seckillId, phone, md5);
-                logger.info("result={}",execution);
+                logger.info("result={}", execution);
             } catch (SeckillClosedException e1) {
                 e1.printStackTrace();
             } catch (RepeatKillException e2) {
                 e2.printStackTrace();
             }
-        }else {
+        } else {
             //秒杀未开启
-            logger.warn("exposer={}",exposer);
+            logger.warn("exposer={}", exposer);
         }
 
         /**
@@ -77,7 +77,6 @@ public class SeckillServiceImplTest {
          exposer=Exposer{exposed=true, md5='aa7e9634c1eb940bebfbc1af670b3112', seckillId=1000, now=0, start=0, end=0}
          */
     }
-
 
 
 }
